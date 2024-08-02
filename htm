@@ -1,0 +1,56 @@
+<!-- src/app/my-form/my-form.component.html -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName" />
+    <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched">
+      First name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName" />
+    <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched">
+      Last name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="form.get('email').invalid && form.get('email').touched">
+      Enter a valid email.
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" formControlName="phoneNumber" />
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+    <div>
+      <label for="street">Street:</label>
+      <input id="street" formControlName="street" />
+    </div>
+
+    <div>
+      <label for="city">City:</label>
+      <input id="city" formControlName="city" />
+    </div>
+
+    <div>
+      <label for="state">State:</label>
+      <input id="state" formControlName="state" />
+    </div>
+
+    <div>
+      <label for="zip">Zip Code:</label>
+      <input id="zip" formControlName="zip" />
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
